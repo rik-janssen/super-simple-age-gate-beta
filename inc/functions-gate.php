@@ -82,9 +82,16 @@ function wpshout_save_post_if_submitted() {
         echo 'Did not save because your form seemed to be invalid. Sorry';
         return;
     }
+    
+    
+    echo $_POST['title'];
+    //print_r( htmlspecialchars(isset($_COOKIE['text-cookie'])));
+    echo htmlspecialchars($_COOKIE["text-cookie"]);
 
-// setcookie( 'age-gate', $_POST['title'], time()+300600 );
 
+}
 
-
+add_action( 'init', 'my_setcookie_example' );
+function my_setcookie_example() {
+    setcookie( 'text-cookie', $_POST['title'], 3 * DAYS_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN );
 }
