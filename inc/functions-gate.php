@@ -83,15 +83,35 @@ function wpshout_save_post_if_submitted() {
         return;
     }
     
-    
+    print_r(bcAGGT_check_age(17,04,1986));
     echo $_POST['title'];
     //print_r( htmlspecialchars(isset($_COOKIE['text-cookie'])));
-    echo htmlspecialchars($_COOKIE["text-cookie"]);
+    //echo htmlspecialchars($_COOKIE["text-cookie"]);
 
 
 }
 
 add_action( 'init', 'my_setcookie_example' );
 function my_setcookie_example() {
-    setcookie( 'text-cookie', $_POST['title'], 3 * DAYS_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN );
+    //setcookie( 'text-cookie', $_POST['title'], 3 * DAYS_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN );
+}
+
+function bcAGGT_check_age($d=0,$m=0,$y=0){
+    
+  $birthDate = $m."/".$d."/".$y;
+    
+  //explode the date to get month, day and year
+  $birthDate = explode("/", $birthDate);
+    
+  //get age from date or birthdate
+  $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
+    ? ((date("Y") - $birthDate[2]) - 1)
+    : (date("Y") - $birthDate[2]));
+    
+  $res = array('age'=> $age, 
+               'date-string' =>$birthDate
+              );
+    
+  return $res;
+    
 }
