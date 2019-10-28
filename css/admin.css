@@ -1,0 +1,82 @@
+/* ------------------------------ */
+/* By Rik Janssen / Betacore.tech */
+/* ------------------------------ */
+
+/* the form styles */
+
+.bcSOFF_thumbnail{
+	padding: 10px;
+	border: 1px solid #DAE1E7;
+	background-color: #fff;
+	display: inline-block;
+	min-width: 25em;
+	border-radius: 2px;
+	overflow: hidden;
+	box-sizing: border-box;
+
+}
+
+.bcSOFF_thumbnail img{
+	border: 1px solid #CDD2D8;
+	background-color: #fff;
+	border-radius: 2px;
+	float: left;
+	margin-right: 10px;
+}
+
+.bcSOFF_thumbnail p{
+	margin: 0px !important;
+	padding: 0px !important;
+	line-height: 19px;
+}
+
+/* the plugin page footer */
+
+.bcSOFF_offline_footer{
+	overflow: hidden;
+	margin-top: 50px;
+	padding-top: 25px;
+	margin-right: 30px;
+	border-top: 1px dotted #888;
+	color: #888 !important;
+}
+
+.bcSOFF_offline_footer a{
+	display: inline-block;
+	margin-right: 40px;
+	float: left;
+	color: #272727;
+}
+
+.bcSOFF_offline_footer a:hover{
+	color: #68A8F5;
+}
+
+
+.bcSOFF_offline_footer a img{
+	max-width: 80px;
+}
+
+.bcSOFF_offline_footer h2,
+.bcSOFF_offline_footer p{
+	margin: 0px;
+	padding: 0px;
+	padding-top: 5px;
+	color: #313131 !important;
+}
+
+.bcSOFF_donate{
+	float: right;
+}
+
+/* the admin bar label */
+
+li.bcSOFF_offline a.ab-item{
+	background-color: #0088C9 !important;
+	color: #fff !important;
+}
+
+li.bcSOFF_offline a.ab-item:hover{
+	background-color: #F15A29 !important;
+	color: #fff !important;
+}
