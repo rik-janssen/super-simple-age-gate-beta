@@ -17,9 +17,10 @@ function bcAGGT_age_gate(){
     if ($bcAGGT_site_uc_status == true){   
 
 
-			
+			if($_COOKIE['requiredage']==1){
 			// when the user wants to show a pretty page..
-        	include plugin_dir_path( __DIR__ ).'template/wp-gate-page.php';
+        	   include plugin_dir_path( __DIR__ ).'template/wp-gate-page.php';
+            }
 			
         
     }
@@ -51,13 +52,15 @@ function bcAGGT_get_image($img_ID){
 
 
 function wpshout_frontend_post() {
-wpshout_save_post_if_submitted();
+//wpshout_save_post_if_submitted();
 ?>
 <div id="postbox">
     <form id="new_post" name="new_post" method="post">
 
     <p><label for="title">Title</label><br />
-        <input type="text" id="title" value="" tabindex="1" size="20" name="title" />
+        <input type="text" id="day" value="" tabindex="1" size="2" name="day" />
+        <input type="text" id="month" value="" tabindex="1" size="2" name="month" />
+        <input type="text" id="year" value="" tabindex="1" size="4" name="year" />
     </p>
 
 
@@ -73,7 +76,13 @@ wpshout_save_post_if_submitted();
 
 function wpshout_save_post_if_submitted() {
     // Stop running function if form wasn't submitted
-    if ( !isset($_POST['title']) ) {
+    if ( !isset($_POST['day']) ) {
+        return;
+    }
+    if ( !isset($_POST['month']) ) {
+        return;
+    }
+    if ( !isset($_POST['year']) ) {
         return;
     }
 
@@ -83,18 +92,43 @@ function wpshout_save_post_if_submitted() {
         return;
     }
     
-    print_r(bcAGGT_check_age(17,04,1986));
-    echo $_POST['title'];
+    print_r(bcAGGT_check_age($_POST['day'],$_POST['month'],$_POST['year']));
+    //echo $_POST['title'];
     //print_r( htmlspecialchars(isset($_COOKIE['text-cookie'])));
     //echo htmlspecialchars($_COOKIE["text-cookie"]);
-
+    $age_check = bcAGGT_check_age($_POST['day'],$_POST['month'],$_POST['year']);
+    if ($age_check['age']>18){
+        return 2;  
+    }else{
+        return 1;
+    }
 
 }
+
+
+
 
 add_action( 'init', 'my_setcookie_example' );
 function my_setcookie_example() {
-    //setcookie( 'text-cookie', $_POST['title'], 3 * DAYS_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN );
+    
+    // als sessie true is, maak cookie
+    $old_enough = wpshout_save_post_if_submitted();
+    
+    
+    if (!isset($_COOKIE['requiredage'])){
+        setcookie( 'requiredage', $old_enough, time()+3600*24*100, COOKIEPATH, COOKIE_DOMAIN, false);
+    }else{
+        echo "dont set";
+    }
+
+    
+    //echo  . '--'.;
+    
+    // forward
+ 
 }
+
+
 
 function bcAGGT_check_age($d=0,$m=0,$y=0){
     

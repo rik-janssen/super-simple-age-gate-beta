@@ -21,7 +21,6 @@
 <div id="bcAGGT_container">
 	<div class="bcAGGT_message_box_wrapper">
         <div class="bcAGGT_message_box">
-        Dit mag je niet zien!!!!!
             <?php wpshout_frontend_post(); ?>
         </div>
 	</div>
