@@ -1,63 +1,55 @@
-=== Super Simple Site Offline ===
+=== Super Simple Age Gate ===
 Contributors: Rik Janssen
-Tags: offline mode, under construction, redirect, blackout, work in progress, forward, header, offline
+Tags: age gate, alcohol, age restrictions
 Donate link: https://www.paypal.com/donate/?token=y9x2_N0_18pSbdHE9l9jivsqB3aTKgWQ3qGgxg_t6VUUmSU6B2H1hUcANUBzhX5xV0qg2G&country.x=NL&locale.x=NL
 Requires at least: 5.2
 Tested up to: 5.2.4
-Requires PHP: 5.8
-Stable tag: 1.0
+Requires PHP: 7
+Stable tag: 0.9
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Simple Site Offline by Beta is a super simple but versatile site-offline plugin. No bells and whistles, just straight to the point.
+Super Simple Age Gate is ment for alcohol brands, webshops and other types of websites that has to have a curtain where people below your set age can't peek behind.
 
 == Description ==
-Site offline plugins are made awesome again with this piece of code. While most site offline plugins are bulky, intrusive and annoying this one is as light as a feather and has no paid options. The nav item is neatly tucked away within the settings menu so it feels like it is part of Wordpress.
 
-Super Simple Site Offline contains the following features:
-* Simple enable and disable button and settings page.
-* Custom background, display text and logo for the ones who have a logo.
-* A redirect option for if you want to close a site and make sure all the trafic is forwarded to the new site.
+Super Simple Age Gate is ment for alcohol brands, webshops and other types of websites that has to have a curtain where people below your set age can't peek behind. With some nice customisable items and features and the option to add a cookie notice this is a complete plugin for those who need is. 
+
+Super Simple Age Gate contains the following features:
+* Simply put in an age and activate the plugin.
+* Custom background, display text and logo for ease of use. If you don't like the embedded themes, just change the css yourself in a non-destructive way.
+* Enable or disable the cookie notice. This is useful for websites that operate in Europe.
 
 
 == Installation ==
 1. Upload the unpacked folder to the "/wp-content/plugins/" directory.
 2. Activate the plugin through the "Plugins" menu in WordPress.
-3. Go to the settings menu and activate the offline mode.
+3. Go to the settings menu and activate the age gate.
 
 == Frequently Asked Questions ==
-= Can it do a redirect? =
-Oh yes it sure can! The best redirect you've ever seen.
+= Can I set the age I want? =
+Oh yes it sure can! Up to a 100.
 
 = Is half of it unusable because I have to pay? =
 No. The entire thing is free and it will be in the future.
 
-= What about foo bar? =
-To answer to foo bar dilemma. We still don't know how the foo hit the bar. But 42 is always the answer as far as I'm concerned.
+= Does is comply with European law? =
+I am not entirely sure since it is a big grey area as with all web-applications and plugins. But it shows that you are willing to work on it.
 
 == Screenshots ==
-1. Some of the options you can work with all neatly tucked away under the settings tab.
-2. Even some custom CSS, and header information and Google Analytics/Google Tag Manager magic is possible.
-3. Select your logo and enjoy a classic Wordpress view.
-4. If you want a background image, no problem! Branding is really simple.
+1. The age gate in action!
+2. The back end of the age gate. It is tucked away under the users nav.
+3. The plain page, classic dark template.
+4. The classic light template.
+5. There is ample oppurtunity to customise this screen so it fits your own needs.
 
 == Changelog ==
-= 1.0 =
-The full release!
-* Added different themes for the offline page.
-* A preview button so you can check it out when you are logged in.
-* Google Analytics or Tagmanager code.
-* Added the classes to the CSS edit box for your convenience.
-
 = 0.9 =
-* Some stylesheet fixes for when the plugin is not activated.
-* Changed a couple of labels on the admin -> settings -> offline page to make it neater and more convenient.
+* The first release to the public.
+* Added some style sheets
+* Added a custom message
 
-= 0.8 =
-* Initial release.
 
-= Up to 0.7 =
-* Lots and lots of updates that happened on my own server but didn't take the time to write them down.
 
 == Upgrade Notice ==
 = 0.8 =
