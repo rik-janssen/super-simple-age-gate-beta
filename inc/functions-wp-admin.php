@@ -3,9 +3,31 @@
 /* adding the stylesheet to WP-admin */
 
 function bcAGGT_css_admin() {
-  wp_enqueue_style('beta-gate-admin', plugin_dir_url( __DIR__ ).'css/admin.css');
+	wp_enqueue_style('beta-gate-admin', plugin_dir_url( __DIR__ ).'css/admin.css');
 }
 add_action('admin_enqueue_scripts', 'bcAGGT_css_admin');
+
+
+function bcAGGT_css_frontend() {
+	if(get_option('bcAGGT_gate_theme')=='classic_dark'){
+		wp_enqueue_style( 'beta-gate', plugin_dir_url( __DIR__ ).'css/style-classicdark.css');
+	}else{
+    	wp_enqueue_style( 'beta-gate', plugin_dir_url( __DIR__ ).'css/style.css');
+	}
+}
+add_action('init', 'bcAGGT_css_frontend', 99);
+
+
+function bcAGGT_css_custom(){
+if(get_option('bcAGGT_gate_css')!=''){
+echo '<style type="text/css">
+';
+echo get_option('bcAGGT_gate_css');
+echo '
+</style>';
+}	
+}
+add_action('wp_head', 'bcAGGT_css_custom', 100);
 
 
 /* ---------------------------------------- */
@@ -27,7 +49,7 @@ function bcAGGT_function_for_sub(){
 function bcAGGT_settings_register() {
 	
 	// this corresponds to some information added at the top of the form
-	$setting_name = 'bcAGGT_offlinesettings';
+	$setting_name = 'bcAGGT_agegatesettings';
 	
 	// sanitize settings
     $args_html = array(
@@ -45,7 +67,14 @@ function bcAGGT_settings_register() {
             );
 	
 	// adding the information to the database as options
-    register_setting( $setting_name, 'bcAGGT_site_offline', $args_int ); // radio
+    register_setting( $setting_name, 'bcAGGT_gate_active', $args_int ); // radio
+	register_setting( $setting_name, 'bcAGGT_gate_age', $args_int ); // radio
+	register_setting( $setting_name, 'bcAGGT_gate_theme', $args_text ); // radio
+	register_setting( $setting_name, 'bcAGGT_gate_logo', $args_text ); // radio
+	register_setting( $setting_name, 'bcAGGT_gate_message', $args_html ); // radio
+	register_setting( $setting_name, 'bcAGGT_gate_background_image', $args_text ); // radio
+	register_setting( $setting_name, 'bcAGGT_gate_css', $args_html ); // radio
+	register_setting( $setting_name, 'bcAGGT_gate_cookienotice', $args_int ); // radio
 	
 }
 
@@ -92,7 +121,7 @@ function bcAGGT_select_box($arg){
 		<?php // making a list of the options
 		foreach($arg['options'] as $name => $value){
 			if($value['op_value']==$arg['selected']){$checkme=' selected';}else{$checkme='';}
-			?><option value="<?php echo $value['op_value']; ?>"<?php echo $checkme; ?>><?php echo $value['op_name'];; ?></option><?php
+			?><option value="<?php echo $value['op_value']; ?>"<?php echo $checkme; ?>><?php echo $value['op_name']; ?></option><?php
 		} ?>
 	</select>
 </div>

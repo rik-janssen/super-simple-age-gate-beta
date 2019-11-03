@@ -1,7 +1,7 @@
 #bcAGGT_container{
 	width: 100%;
 	height: 100vh;
-	background-color: #f1f1f1;
+	background-color: #131619;
 	position: fixed;
 	z-index: 9999999999999;
 	top: 0;
@@ -20,11 +20,11 @@
     
 .bcAGGT_message_box{
 	width: 600px;
-	background-color: #fff;
+	background-color: rgba(32,37,42,0.90);
 	padding: 50px;
 	margin: 0 auto;
 	border-radius: 3px;
-	border: 1px solid #94A0AC;
+	border: 1px solid #2E353C;
 }
 
 img.bcAGGT_gate_logo{
@@ -37,23 +37,25 @@ img.bcAGGT_gate_logo{
 	font-size: 17px;
 	line-height: 19px;
 	overflow: hidden;
+	color: #fff;
 }
 
 .bcAGGT_age_form{
 	display: grid;
 	grid-template-columns: 1fr 1fr 2fr;
 	grid-gap: 10px;
-	margin-bottom: 10px;
-
 }
 
 .bcAGGT_age_form div{
 	position: relative;
 }
 
-.bcAGGT_age_form input{
+.bcAGGT_age_form input[type="text"]{
 	width: 100%;
 	display: block;
+	background-color: #3C454E;
+	color: #fff;
+	border: 1px solid #2E353C;
 	border-radius: 3px;
 }
 
@@ -62,13 +64,16 @@ img.bcAGGT_gate_logo{
 	display: block;
 	font-size: 17px;
 	line-height: 19px;
+	color: #fff;
 }
 
 .bcAGGT_age_cookies{
+	margin-top: 10px;
 	margin-bottom: 10px;
 	padding: 15px;
 	text-align: left;
-	background-color: #D0E4FB;
+	background-color: #2E353C;
+	color: #fff;
 	font-size: 15px;
 	line-height: 17px;
 	overflow: hidden;

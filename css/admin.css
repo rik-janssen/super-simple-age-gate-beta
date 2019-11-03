@@ -32,7 +32,7 @@
 
 /* the plugin page footer */
 
-.bcAGGT_offline_footer{
+.bcAGGT_gate_footer{
 	overflow: hidden;
 	margin-top: 50px;
 	padding-top: 25px;
@@ -41,24 +41,24 @@
 	color: #888 !important;
 }
 
-.bcAGGT_offline_footer a{
+.bcAGGT_gate_footer a{
 	display: inline-block;
 	margin-right: 40px;
 	float: left;
 	color: #272727;
 }
 
-.bcAGGT_offline_footer a:hover{
+.bcAGGT_gate_footer a:hover{
 	color: #68A8F5;
 }
 
 
-.bcAGGT_offline_footer a img{
+.bcAGGT_gate_footer a img{
 	max-width: 80px;
 }
 
-.bcAGGT_offline_footer h2,
-.bcAGGT_offline_footer p{
+.bcAGGT_gate_footer h2,
+.bcAGGT_gate_footer p{
 	margin: 0px;
 	padding: 0px;
 	padding-top: 5px;
@@ -71,12 +71,12 @@
 
 /* the admin bar label */
 
-li.bcAGGT_offline a.ab-item{
+li.bcAGGT_gate a.ab-item{
 	background-color: #0088C9 !important;
 	color: #fff !important;
 }
 
-li.bcAGGT_offline a.ab-item:hover{
+li.bcAGGT_gate a.ab-item:hover{
 	background-color: #F15A29 !important;
 	color: #fff !important;
 }

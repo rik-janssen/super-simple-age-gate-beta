@@ -1,41 +1,105 @@
 <?php
 
 /* ---------------------------------------- */
-/* creating the site offline functionality  */
+/* creating age gate form functionality     */
 
 function bcAGGT_age_gate(){
+
+	global $bcAGGT_age_check_int;
+	global $bcAGGT_error_message;
+	global $bcAGGT_minimum_age;
 	
-    // check if the option is set
-    if( get_option('bcAGGT_site_offline') == 1 ) {
-        $bcAGGT_site_uc_status = true; // site is offline so run
+	// check if the age-gate already ran, if not. go for the prompt.
+	if (get_option('bcAGGT_gate_active')==1){
+		if ($bcAGGT_age_check_int==0){
+			if (bcAGGT_bot()==false){
+				include plugin_dir_path( __DIR__ ).'template/wp-gate-page.php';
+			}
+		}
+	}
+	
+}
+add_action('wp_footer', 'bcAGGT_age_gate');
+
+
+
+
+/* ---------------------------------------- */
+/* creating age gate check functionality    */
+
+function bcAGGT_gate_check() {
+	
+	global $bcAGGT_age_check_int;
+	global $bcAGGT_error_message;
+	global $bcAGGT_minimum_age;
+	// hier output post OF de cookie
+	
+    if (isset($_COOKIE['bcAGGTrequiredage'])==1){
+        $bcAGGT_age_check_int = 1;	
     }else{
-        $bcAGGT_site_uc_status = false; // site is online so not run
-    }
-    
-    
-    // here it all comes together: is the status OFFLINE and loggedin TRUE?
-    if ($bcAGGT_site_uc_status == true){   
+		$bcAGGT_age_check_int = 0;		
+	}
 
-
-			if($_COOKIE['requiredage']==1){
-			// when the user wants to show a pretty page..
-        	   include plugin_dir_path( __DIR__ ).'template/wp-gate-page.php';
-            }
-			
-        
-    }
-}
-
-	add_action('wp_footer', 'bcAGGT_age_gate');
-
-
-
-// quick check if we are on a login page
-function bcAGGT_is_login_page() {
+	if(get_option('bcAGGT_gate_age')==0){
+		$bcAGGT_minimum_age = 18;
+	}else{
+		$bcAGGT_minimum_age = get_option('bcAGGT_gate_age');	
+	}
+	if (get_option('bcAGGT_gate_cookienotice')==1){
+		$bcAGGT_cookie_notice = substr(isset($_POST['bcAGGT_cookies']),0,1);
+	}else{
+		$bcAGGT_cookie_notice = 1;
+	}
 	
-    return in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'));
+	$bcAGGT_error_message = "";
+	$bcAGGT_cookies = "";
+ 
+    // Stop running function if form wasn't submitted
+    if ( !isset($_POST['bcAGGT_day']) ) {
+        return;
+    }
+    if ( !isset($_POST['bcAGGT_month']) ) {
+        return;
+    }
+    if ( !isset($_POST['bcAGGT_year']) ) {
+        return;
+    }
+
+    // Check that the nonce was set and valid
+    if( !wp_verify_nonce($_POST['_wpnonce'], 'wps-frontend-post') ) {
+       $bcAGGT_error_message = __("Did not save because your form seemed to be invalid. Sorry",'betagate');
+       return;
+    }
 	
+    
+    $age_check = bcAGGT_check_age(substr($_POST['bcAGGT_day'],0,2),substr($_POST['bcAGGT_month'],0,2),substr($_POST['bcAGGT_year'],0,4));
+
+	if ($age_check['age']>110){
+		$age_check['age'] = 0;
+	}
+	
+	if (isset($_POST['bcAGGT_day'])){
+		
+		if ($bcAGGT_cookie_notice==0){
+			$bcAGGT_error_message = __("If you want to view the content on this website, please agree with the cookie policy.",'betagate');
+		
+		}else{		
+			if ($age_check['age']>$bcAGGT_minimum_age){
+				setcookie( 'bcAGGTrequiredage', '1', time()+3600*24*100, '/', COOKIE_DOMAIN, false);
+				$bcAGGT_age_check_int = 1;
+
+
+			}else{
+				setcookie( 'bcAGGTrequiredage', '0', time()+3600*24*100, '/', COOKIE_DOMAIN, false);
+				$bcAGGT_age_check_int = 0;
+				$bcAGGT_error_message = __("Oops! It looks like you aren't old enough to visit this website. Sorry.",'betagate');
+			}
+		}
+	}
+ 
 }
+add_action( 'init', 'bcAGGT_gate_check' );
+
 
 /* ---------------------------------------- */
 /* Fetch image information by ID            */
@@ -50,85 +114,8 @@ function bcAGGT_get_image($img_ID){
 	
 }
 
-
-function wpshout_frontend_post() {
-//wpshout_save_post_if_submitted();
-?>
-<div id="postbox">
-    <form id="new_post" name="new_post" method="post">
-
-    <p><label for="title">Title</label><br />
-        <input type="text" id="day" value="" tabindex="1" size="2" name="day" />
-        <input type="text" id="month" value="" tabindex="1" size="2" name="month" />
-        <input type="text" id="year" value="" tabindex="1" size="4" name="year" />
-    </p>
-
-
-    <?php wp_nonce_field( 'wps-frontend-post' ); ?>
-
-    <p align="right"><input type="submit" value="Publish" tabindex="6" id="submit" name="submit" /></p>
-    
-    </form>
-</div>
-    <?php
-}
-
-
-function wpshout_save_post_if_submitted() {
-    // Stop running function if form wasn't submitted
-    if ( !isset($_POST['day']) ) {
-        return;
-    }
-    if ( !isset($_POST['month']) ) {
-        return;
-    }
-    if ( !isset($_POST['year']) ) {
-        return;
-    }
-
-    // Check that the nonce was set and valid
-    if( !wp_verify_nonce($_POST['_wpnonce'], 'wps-frontend-post') ) {
-        echo 'Did not save because your form seemed to be invalid. Sorry';
-        return;
-    }
-    
-    print_r(bcAGGT_check_age($_POST['day'],$_POST['month'],$_POST['year']));
-    //echo $_POST['title'];
-    //print_r( htmlspecialchars(isset($_COOKIE['text-cookie'])));
-    //echo htmlspecialchars($_COOKIE["text-cookie"]);
-    $age_check = bcAGGT_check_age($_POST['day'],$_POST['month'],$_POST['year']);
-    if ($age_check['age']>18){
-        return 2;  
-    }else{
-        return 1;
-    }
-
-}
-
-
-
-
-add_action( 'init', 'my_setcookie_example' );
-function my_setcookie_example() {
-    
-    // als sessie true is, maak cookie
-    $old_enough = wpshout_save_post_if_submitted();
-    
-    
-    if (!isset($_COOKIE['requiredage'])){
-        setcookie( 'requiredage', $old_enough, time()+3600*24*100, COOKIEPATH, COOKIE_DOMAIN, false);
-    }else{
-        echo "dont set";
-    }
-
-    
-    //echo  . '--'.;
-    
-    // forward
- 
-}
-
-
+/* ---------------------------------------- */
+/* Return an age by date                    */
 
 function bcAGGT_check_age($d=0,$m=0,$y=0){
     
@@ -148,4 +135,50 @@ function bcAGGT_check_age($d=0,$m=0,$y=0){
     
   return $res;
     
+}
+
+/* ---------------------------------------- */
+/* Quick check if we are on a login page    */
+
+function bcAGGT_is_login_page() {
+	
+    return in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'));
+	
+}
+
+/* ---------------------------------------- */
+/* Google bot detection                     */
+function bcAGGT_bot() {
+	$crawlers = array(
+	'Google' => 'Google',
+	'MSN' => 'msnbot',
+		  'Rambler' => 'Rambler',
+		  'Yahoo' => 'Yahoo',
+		  'AbachoBOT' => 'AbachoBOT',
+		  'accoona' => 'Accoona',
+		  'AcoiRobot' => 'AcoiRobot',
+		  'ASPSeek' => 'ASPSeek',
+		  'CrocCrawler' => 'CrocCrawler',
+		  'Dumbot' => 'Dumbot',
+		  'FAST-WebCrawler' => 'FAST-WebCrawler',
+		  'GeonaBot' => 'GeonaBot',
+		  'Gigabot' => 'Gigabot',
+		  'Lycos spider' => 'Lycos',
+		  'MSRBOT' => 'MSRBOT',
+		  'Altavista robot' => 'Scooter',
+		  'AltaVista robot' => 'Altavista',
+		  'ID-Search Bot' => 'IDBot',
+		  'eStyle Bot' => 'eStyle',
+		  'Scrubby robot' => 'Scrubby',
+		  'Facebook' => 'facebookexternalhit',
+	  );
+	  // to get crawlers string used in function uncomment it
+	  // it is better to save it in string than use implode every time
+	  // global $crawlers
+	   $crawlers_agents = implode('|',$crawlers);
+	  if (strpos($crawlers_agents, $USER_AGENT) === false)
+		  return false;
+	  else {
+		return true;
+	  }
 }
