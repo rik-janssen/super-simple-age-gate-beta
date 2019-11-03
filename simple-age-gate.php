@@ -6,7 +6,7 @@
 * Version: 1.0
 * Author: Beta
 * Author URI: https://betacore.tech/
-* Text Domain: betaoffline
+* Text Domain: betagate
 * Domain Path: /lang
 **/
 

@@ -1,6 +1,6 @@
 <div class="wrap">
 		
-    <h1>Site Offline</h1>
+    <h1>Age Gate</h1>
 
     <form method="post" action="options.php">
         <?php settings_fields( 'bcAGGT_offlinesettings' ); ?>

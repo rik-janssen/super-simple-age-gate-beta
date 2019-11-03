@@ -9,7 +9,7 @@ function bcAGGT_admin_menu_sub_agegate() {
     // add the sub menu page for the plugin
 	// https://codex.wordpress.org/Adding_Administration_Menus
     add_submenu_page( 
-        'options-general.php', 
+        'users.php', 
         'Age Gate', 
         'Age Gate', 
         'manage_options', 

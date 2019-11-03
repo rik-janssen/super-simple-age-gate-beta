@@ -2,10 +2,10 @@
 /* ---------------------------------------- */
 /* adding the stylesheet to WP-admin */
 
-function bcAGGT_offline_admin() {
-  wp_enqueue_style('beta-admin', plugin_dir_url( __DIR__ ).'css/admin.css');
+function bcAGGT_css_admin() {
+  wp_enqueue_style('beta-gate-admin', plugin_dir_url( __DIR__ ).'css/admin.css');
 }
-add_action('admin_enqueue_scripts', 'bcAGGT_offline_admin');
+add_action('admin_enqueue_scripts', 'bcAGGT_css_admin');
 
 
 /* ---------------------------------------- */
