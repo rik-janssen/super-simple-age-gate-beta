@@ -305,11 +305,11 @@ $bcALG_my_plugins = array(
                 array(
                     'slug'=>'super-simple-age-gate-beta',
                     'name'=>'Super Simple Age Gate',
-                    'content'=>"Do you have to filter out younger visitors? With this super simple age gate you'll fix those age restrictions quickly. Ment for webshops and other types of websites that has to have a curtain where people below your set age can't peek behind.." ),
+                    'content'=>"Do you have to filter out younger visitors? With this super simple age gate you'll fix those age restrictions quickly. Ment for webshops and other types of websites that has to have a curtain where people below your set age can't peek behind.." )/*,
                 array(
                     'slug'=>'super-simple-schema-markup-beta',
                     'name'=>'Super Simple Schema Markup',
-                    'content'=>'Grab those rich snippets with this Schema plugin that adds Json-LD schema to your Wordpress website. And if you want custom schema per page that is possible as well.' )/*,
+                    'content'=>'Grab those rich snippets with this Schema plugin that adds Json-LD schema to your Wordpress website. And if you want custom schema per page that is possible as well.' ),
                 array(
                     'slug'=>'the-janitor-beta',
                     'name'=>'The Janitor',
@@ -328,35 +328,53 @@ $get_slug = explode('/', plugin_basename( __FILE__ ));
             if($get_slug[0] != $bc_value['slug']){
         ?>
             <li>
-                <img src="https://ps.w.org/<?php echo $bc_value['slug']; ?>/assets/icon-256x256.jpg" title="<?php echo $bc_value['name']; ?> by Beta" />
+                <img src="https://ps.w.org/<?php echo $bc_value['slug']; ?>/assets/icon-256x256.jpg" title="<?php echo $bc_value['name']; ?> by Beta" class="bcALG_icon" />
                 <h3><a href="https://wordpress.org/plugins/super-simple-site-offline-beta/" target="_blank"><?php echo $bc_value['name']; ?></a></h3>
                 <p><?php echo $bc_value['content']; ?></p>
-                <a href="https://wordpress.org/plugins/<?php echo $bc_value['slug']; ?>/" class="button" target="_blank"><?php _e('Plugin'); ?></a>
-                <a href="<?php bloginfo('wpurl'); ?>/wp-admin/plugin-install.php?tab=plugin-information&plugin=<?php echo $bc_value['slug']; ?>&TB_iframe=false" class="button button-primary" target="_blank"><?php _e('Plugin details'); echo $get_slug[0]; ?></a>
+                <a href="https://wordpress.org/plugins/<?php echo $bc_value['slug']; ?>/" class="button" target="_blank"><?php _e('Plugin page'); ?></a>
+                <a href="<?php bloginfo('wpurl'); ?>/wp-admin/plugin-install.php?tab=plugin-information&plugin=<?php echo $bc_value['slug']; ?>&TB_iframe=false" class="button button-primary" target="_blank"><?php _e('Install'); ?></a>
             </li>
     
         <?php }} ?>
     </ul>
-
+<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+	#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+	/* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+</style>
     <div class="bcALG_mailinglist">
-        <form>
+        <form action="https://oneweekendwebsite.us20.list-manage.com/subscribe/post?u=72e22e9c5e66e05351f6c92af&amp;id=87b9e508b0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
             <h2>Are you running Wordpress inefficient? <span>Betacore is developing plugins to fix that!</span></h2>
             <p>Get an email when new plugins arrive! The only thing you'll have to do is subscribe to the mailing list now!</p>
             <ul class="bcALG_mailingform">
                 <li>
-                    <label for="">Name</label>
-                    <input type="text" value="" name="" id="" />
+                    
+			
+					<input type="text" value="" name="FNAME" class="" id="mce-FNAME" required>
+					<label for="mce-FNAME">First Name</label>
                 </li>
                 <li>
-                    <label for="">Email adress</label>
-                    <input type="text" value="" name="" id="" />
+                    
+                    
+					
+					<input type="text" value="" name="EMAIL" class="required email" id="mce-EMAIL" required/>
+					<label for="mce-EMAIL">Email Address</label>
                 </li>
                 <li>
-                    <input type="submit" value="Join!" name="" id="" />
+					<input type="submit" value="Join!" name="subscribe" id="mc-embedded-subscribe" />
                 </li>
+				
+
+    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_72e22e9c5e66e05351f6c92af_87b9e508b0" tabindex="-1" value=""></div>
+
+
             </ul>
         </form>
     </div>
+	<div class="bcALG_logobar">
     <a href="https://beta-media.com/super-simple-site-gate-wordpress-plugin/"><img src="<?php echo plugin_dir_url( __DIR__ ); ?>img/betalogo-b.png" /></a>
     <p class="bcALG_url"><span>By:</span> <a href="https://www.betacore.tech" target="_blank">www.betacore.tech</a></p>
+	</div>
 </div>
