@@ -20,7 +20,7 @@
            <div id="postbox">
 				<form id="new_post" name="new_post" method="post">
             
-				<?php echo $logo_image.'-'.$bcAGGT_cookie_time; ?>
+				<?php echo $logo_image; ?>
 				<?php if($bcAGGT_error_message!=""){ ?>
 	
 					<div class="bcAGGT_error_message">
@@ -50,7 +50,7 @@
 				<?php if(get_option('bcAGGT_gate_cookienotice')==1){ ?>
 				<div class="bcAGGT_age_cookies">	
 					<input type="checkbox" id="bcAGGT_cookies" value="1" name="bcAGGT_cookies" />
-					<label for="bcAGGT_cookies"><?php _e("I agree with the use of cookies.",'betagate'); ?></label>
+					<label for="bcAGGT_cookies" class="gate-text"><?php _e("I agree with the use of cookies.",'betagate'); ?></label>
 				</div>
 				<?php } ?>
 				<?php wp_nonce_field( 'wps-frontend-post' ); ?>

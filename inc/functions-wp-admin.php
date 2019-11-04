@@ -15,7 +15,7 @@ function bcAGGT_css_frontend() {
     	wp_enqueue_style( 'beta-gate', plugin_dir_url( __DIR__ ).'css/style.css');
 	}
 }
-add_action('init', 'bcAGGT_css_frontend', 99);
+add_action('init', 'bcAGGT_css_frontend', 100);
 
 
 function bcAGGT_css_custom(){

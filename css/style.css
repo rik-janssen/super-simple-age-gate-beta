@@ -38,6 +38,13 @@ img.bcAGGT_gate_logo{
 	line-height: 19px;
 	overflow: hidden;
 }
+.bcAGGT_age_message_footer{
+	margin-top: 20px;
+	margin-bottom: 0px;
+	font-size: 14px;
+	line-height: 16px;
+	overflow: hidden;
+}
 
 .bcAGGT_age_form{
 	display: grid;
@@ -69,6 +76,7 @@ img.bcAGGT_gate_logo{
 	padding: 15px;
 	text-align: left;
 	background-color: #D0E4FB;
+    color: #1f1f1f;
 	font-size: 15px;
 	line-height: 17px;
 	overflow: hidden;
@@ -77,6 +85,8 @@ img.bcAGGT_gate_logo{
 
 .bcAGGT_age_cookies input{
 	margin-right: 10px;
+    max-width: 40px;
+    float: left;
 }
 
 .bcAGGT_error_message{

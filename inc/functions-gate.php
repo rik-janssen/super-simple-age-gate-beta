@@ -167,7 +167,7 @@ function bcAGGT_is_login_page() {
 /* ---------------------------------------- */
 /* Google bot detection                     */
 function bcAGGT_bot() {
-	/*$crawlers = array(
+	$crawlers = array(
 	'Google' => 'Google',
 	'MSN' => 'msnbot',
 		  'Rambler' => 'Rambler',
@@ -194,9 +194,9 @@ function bcAGGT_bot() {
 	  // it is better to save it in string than use implode every time
 	  // global $crawlers
 	   $crawlers_agents = implode('|',$crawlers);
-	  if (strpos($crawlers_agents, $USER_AGENT) === false)*/
+	  if (strpos($crawlers_agents, $USER_AGENT) === false){
 		  return false;
-	 /* else {
+      } else {
 		return true;
-	  }*/
+	  }
 }

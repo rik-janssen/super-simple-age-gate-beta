@@ -9,16 +9,18 @@ Stable tag: 0.9
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Super Simple Age Gate is ment for alcohol brands, webshops and other types of websites that has to have a curtain where people below your set age can't peek behind.
+Do you have to filter out younger people? With this super simple age gate you'll fix those age restrictions quickly. Ment for webshops and other types of websites that has to have a curtain where people below your set age can't peek behind.
 
 == Description ==
 
-Super Simple Age Gate is ment for alcohol brands, webshops and other types of websites that has to have a curtain where people below your set age can't peek behind. With some nice customisable items and features and the option to add a cookie notice this is a complete plugin for those who need is. 
+Do you have to filter out younger people? With this super simple age gate you'll fix those age restrictions quickly. Ment for webshops and other types of websites that has to have a curtain where people below your set age can't peek behind. With some nice customisable items and features and the option to add a cookie notice this is a complete plugin for those who need is. 
 
 Super Simple Age Gate contains the following features:
 * Simply put in an age and activate the plugin.
 * Custom background, display text and logo for ease of use. If you don't like the embedded themes, just change the css yourself in a non-destructive way.
 * Enable or disable the cookie notice. This is useful for websites that operate in Europe.
+* Whitelist some policy pages that need to be shown.
+* Google-bot friendly. Those crawlers go right underneath the curtain...
 
 
 == Installation ==
@@ -44,6 +46,10 @@ I am not entirely sure since it is a big grey area as with all web-applications 
 5. There is ample oppurtunity to customise this screen so it fits your own needs.
 
 == Changelog ==
+= 1.0 =
+* Added cookie length options
+* Added whitelisting options for privacy, cookie and disclaimer policies
+
 = 0.9 =
 * The first release to the public.
 * Added some style sheets
