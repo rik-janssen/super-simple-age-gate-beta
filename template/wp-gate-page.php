@@ -19,8 +19,8 @@
         <div class="bcAGGT_message_box">
            <div id="postbox">
 				<form id="new_post" name="new_post" method="post">
-
-				<?php echo $logo_image; ?>
+            
+				<?php echo $logo_image.'-'.$bcAGGT_cookie_time; ?>
 				<?php if($bcAGGT_error_message!=""){ ?>
 	
 					<div class="bcAGGT_error_message">
@@ -56,6 +56,11 @@
 				<?php wp_nonce_field( 'wps-frontend-post' ); ?>
 				</div>
 				<input type="submit" value="<?php _e("Continue",'betagate'); ?>" tabindex="6" id="bcAGGT_submit" name="submit" />
+                <?php if(get_option('bcAGGT_gate_message_footer')!=''){ ?>
+                <div class="bcAGGT_age_message_footer">	
+					<?php echo get_option('bcAGGT_gate_message_footer'); ?>
+				</div>
+               <?php } ?>
 
 				</form>
 			</div>

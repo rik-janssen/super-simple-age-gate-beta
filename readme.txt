@@ -1,6 +1,6 @@
 === Super Simple Age Gate ===
 Contributors: Rik Janssen
-Tags: age gate, alcohol, age restrictions
+Tags: age gate, adults-only, age restrictions
 Donate link: https://www.paypal.com/donate/?token=y9x2_N0_18pSbdHE9l9jivsqB3aTKgWQ3qGgxg_t6VUUmSU6B2H1hUcANUBzhX5xV0qg2G&country.x=NL&locale.x=NL
 Requires at least: 5.2
 Tested up to: 5.2.4
@@ -28,7 +28,7 @@ Super Simple Age Gate contains the following features:
 
 == Frequently Asked Questions ==
 = Can I set the age I want? =
-Oh yes it sure can! Up to a 100.
+Oh yes it sure can! Up to a 110.
 
 = Is half of it unusable because I have to pay? =
 No. The entire thing is free and it will be in the future.

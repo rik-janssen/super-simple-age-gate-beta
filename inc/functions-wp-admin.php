@@ -72,10 +72,18 @@ function bcAGGT_settings_register() {
 	register_setting( $setting_name, 'bcAGGT_gate_theme', $args_text ); // radio
 	register_setting( $setting_name, 'bcAGGT_gate_logo', $args_text ); // radio
 	register_setting( $setting_name, 'bcAGGT_gate_message', $args_html ); // radio
+    register_setting( $setting_name, 'bcAGGT_gate_message_footer', $args_html ); // radio
 	register_setting( $setting_name, 'bcAGGT_gate_background_image', $args_text ); // radio
 	register_setting( $setting_name, 'bcAGGT_gate_css', $args_html ); // radio
 	register_setting( $setting_name, 'bcAGGT_gate_cookienotice', $args_int ); // radio
+    register_setting( $setting_name, 'bcAGGT_gate_cookietime', $args_int ); // radio
+    register_setting( $setting_name, 'bcAGGT_page_cookie', $args_int ); // radio
+    register_setting( $setting_name, 'bcAGGT_page_privacy', $args_int ); // radio
+    register_setting( $setting_name, 'bcAGGT_page_disclaimer', $args_int ); // radio
 	
+    
+        
+        
 }
 
 add_action( 'admin_init', 'bcAGGT_settings_register' );

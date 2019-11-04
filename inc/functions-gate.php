@@ -8,12 +8,21 @@ function bcAGGT_age_gate(){
 	global $bcAGGT_age_check_int;
 	global $bcAGGT_error_message;
 	global $bcAGGT_minimum_age;
+    global $bcAGGT_cookie_time;
 	
 	// check if the age-gate already ran, if not. go for the prompt.
 	if (get_option('bcAGGT_gate_active')==1){
 		if ($bcAGGT_age_check_int==0){
 			if (bcAGGT_bot()==false){
-				include plugin_dir_path( __DIR__ ).'template/wp-gate-page.php';
+                $bcAGGT_page_id = get_queried_object_id();
+
+                if(get_option('bcAGGT_page_cookie')==$bcAGGT_page_id AND $bcAGGT_page_id!=0 ){
+                }elseif(get_option('bcAGGT_page_privacy')==$bcAGGT_page_id AND $bcAGGT_page_id!=0 ){
+                }elseif(get_option('bcAGGT_page_disclaimer')==$bcAGGT_page_id AND $bcAGGT_page_id!=0 ){
+                }else{  
+				    include plugin_dir_path( __DIR__ ).'template/wp-gate-page.php';
+                }
+
 			}
 		}
 	}
@@ -32,6 +41,7 @@ function bcAGGT_gate_check() {
 	global $bcAGGT_age_check_int;
 	global $bcAGGT_error_message;
 	global $bcAGGT_minimum_age;
+    global $bcAGGT_cookie_time;
 	// hier output post OF de cookie
 	
     if (isset($_COOKIE['bcAGGTrequiredage'])==1){
@@ -39,6 +49,12 @@ function bcAGGT_gate_check() {
     }else{
 		$bcAGGT_age_check_int = 0;		
 	}
+    
+	if(get_option('bcAGGT_gate_cookietime')!=''){
+        $bcAGGT_cookie_time = time()+3600*get_option('bcAGGT_gate_cookietime');
+    }else{
+        $bcAGGT_cookie_time = time()+3600*24*30; // 1 month standard
+    }
 
 	if(get_option('bcAGGT_gate_age')==0){
 		$bcAGGT_minimum_age = 18;
@@ -70,7 +86,7 @@ function bcAGGT_gate_check() {
        $bcAGGT_error_message = __("Did not save because your form seemed to be invalid. Sorry",'betagate');
        return;
     }
-	
+
     
     $age_check = bcAGGT_check_age(substr($_POST['bcAGGT_day'],0,2),substr($_POST['bcAGGT_month'],0,2),substr($_POST['bcAGGT_year'],0,4));
 
@@ -85,17 +101,19 @@ function bcAGGT_gate_check() {
 		
 		}else{		
 			if ($age_check['age']>$bcAGGT_minimum_age){
-				setcookie( 'bcAGGTrequiredage', '1', time()+3600*24*100, '/', COOKIE_DOMAIN, false);
+				setcookie( 'bcAGGTrequiredage', '1', $bcAGGT_cookie_time, '/', COOKIE_DOMAIN, false);
 				$bcAGGT_age_check_int = 1;
 
 
 			}else{
-				setcookie( 'bcAGGTrequiredage', '0', time()+3600*24*100, '/', COOKIE_DOMAIN, false);
+				setcookie( 'bcAGGTrequiredage', '0', $bcAGGT_cookie_time, '/', COOKIE_DOMAIN, false);
 				$bcAGGT_age_check_int = 0;
 				$bcAGGT_error_message = __("Oops! It looks like you aren't old enough to visit this website. Sorry.",'betagate');
 			}
 		}
 	}
+    
+    
  
 }
 add_action( 'init', 'bcAGGT_gate_check' );
@@ -149,7 +167,7 @@ function bcAGGT_is_login_page() {
 /* ---------------------------------------- */
 /* Google bot detection                     */
 function bcAGGT_bot() {
-	$crawlers = array(
+	/*$crawlers = array(
 	'Google' => 'Google',
 	'MSN' => 'msnbot',
 		  'Rambler' => 'Rambler',
@@ -176,9 +194,9 @@ function bcAGGT_bot() {
 	  // it is better to save it in string than use implode every time
 	  // global $crawlers
 	   $crawlers_agents = implode('|',$crawlers);
-	  if (strpos($crawlers_agents, $USER_AGENT) === false)
+	  if (strpos($crawlers_agents, $USER_AGENT) === false)*/
 		  return false;
-	  else {
+	 /* else {
 		return true;
-	  }
+	  }*/
 }

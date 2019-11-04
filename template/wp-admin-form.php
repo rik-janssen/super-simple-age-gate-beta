@@ -31,7 +31,7 @@
                 </th>
                  <td>
 			<?php 
-				for ($i = 5; $i <= 100; $i++) {
+				for ($i = 5; $i <= 110; $i++) {
 					$age_array[$i]['op_name'] = $i.__(" Years", 'betagate');
 					$age_array[$i]['op_value'] = $i;
 				}
@@ -68,6 +68,29 @@
                     bcAGGT_check_input($check_vars,"If you want people to agree with placing cookies on beforehand."); ?>
 		
 			
+                </td>
+            </tr> 
+            </tr> 
+    		    <tr valign="top">
+                <th scope="row">
+                    <?php _e("Cookie Time", 'betagate'); ?>
+                </th>
+                 <td>
+                <?php 
+				$select_vars = array( 'name'=>'gate_cookietime',
+									 'options'=>array(
+													array('op_name'=>'1 day', 'op_value'=>'24'),
+													array('op_name'=>'3 days', 'op_value'=>'72'),
+                                                    array('op_name'=>'1 week', 'op_value'=>'168'),
+                                                    array('op_name'=>'2 weeks', 'op_value'=>'336'),
+                                                    array('op_name'=>'1 month', 'op_value'=>'744'),
+                                                    array('op_name'=>'3 months', 'op_value'=>'2232'),
+                                                    array('op_name'=>'1 year', 'op_value'=>'8928')
+													),
+									 'selected'=>get_option('bcAGGT_gate_cookietime')
+								   );
+
+				bcAGGT_select_box($select_vars); ?>
                 </td>
             </tr> 
 		</table>
@@ -126,6 +149,27 @@
 				bcAGGT_textarea_field($textarea_vars); ?>
 				 </td>
             </tr>  
+            <tr valign="top">
+                <th scope="row">
+                    <?php _e("The footer message", 'betagate'); ?>
+                </th>
+                 <td>
+					 <p><?php _e('Add some disclaimer or quirky footer line','betagate'); ?></p><br />
+				<?php 
+					 
+				if (get_option('bcAGGT_gate_message_footer')==""){
+					$get_a_message = sprintf( __( 'Add a disclaimer here.', 'betagate' ), $selected_age );
+				}else{
+					$get_a_message = get_option('bcAGGT_gate_message_footer');
+				}
+					 
+				$textarea_vars = array( 'name'=>'gate_message_footer',
+									 'selected'=>$get_a_message
+								   );
+
+				bcAGGT_textarea_field($textarea_vars); ?>
+				 </td>
+            </tr>
 		    <tr valign="top">
                 <th scope="row">
                     <?php _e("Background image", 'betagate'); ?>
@@ -160,6 +204,74 @@
 				 </td>
             </tr>  
 		</table>	
+		<br />
+		<h2><?php _e('Whitelisted pages','betagate'); ?></h2>
+        <p><?php _e('Unhide some of the pages like the cookies page or the privacy policy page.','betagate'); ?></p>
+        <?php
+        
+        $args = array(
+                'post_type' => 'page'
+        );	
+        $query = new WP_Query( $args );
+        $count = 0;
+        $select_vars_list[$count]['op_name'] = __('None','betagate');
+        $select_vars_list[$count]['op_value'] = 0;
+        $count++;
+        if ( $query->have_posts() ) {
+            while ( $query->have_posts() ) {
+
+            $query->the_post();
+            // now $query->post is WP_Post Object, use:
+            // $query->post->ID, $query->post->post_title, etc.
+            $select_vars_list[$count]['op_name'] = $query->post->post_title;
+            $select_vars_list[$count]['op_value'] = $query->post->ID;
+            $count++;
+            }
+        }
+        ?>
+		<table class="bcSOFF_forms form-table">
+		    <tr valign="top">
+                <th scope="row">
+                    <?php _e("Disclaimer", 'betagate'); ?>
+                </th>
+                 <td>
+				<?php 
+                $select_vars = array( 'name'=>'page_disclaimer',
+                                     'options'=> $select_vars_list,
+									 'selected'=>get_option('bcAGGT_page_disclaimer')
+								   );
+				bcAGGT_select_box($select_vars); ?>
+                </td>
+            </tr> 
+    		    <tr valign="top">
+                <th scope="row">
+                    <?php _e("Privacy Policy", 'betagate'); ?>
+                </th>
+                 <td>
+				<?php 
+                $select_vars = array( 'name'=>'page_privacy',
+                                     'options'=> $select_vars_list,
+									 'selected'=>get_option('bcAGGT_page_privacy')
+								   );
+				bcAGGT_select_box($select_vars); ?>                     
+                </td>
+            </tr> 
+            <tr valign="top">
+                <th scope="row">
+                    <?php _e("Cookie policy", 'betagate'); ?>
+                </th>
+                 <td>
+
+				<?php 
+                $select_vars = array( 'name'=>'page_cookie',
+                                     'options'=> $select_vars_list,
+									 'selected'=>get_option('bcAGGT_page_cookie')
+								   );
+				bcAGGT_select_box($select_vars); ?>
+                </td>
+
+            </tr> 
+        </table>
 		<br />
 		<h2><?php _e('Support Beta','betagate'); ?></h2>
 		<table class="bcSOFF_forms form-table">
