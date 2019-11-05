@@ -22,7 +22,7 @@ function bcAGGT_css_custom(){
 if(get_option('bcAGGT_gate_css')!=''){
 echo '<style type="text/css">
 ';
-echo get_option('bcAGGT_gate_css');
+echo esc_html(get_option('bcAGGT_gate_css'),'betagate');
 echo '
 </style>';
 }	

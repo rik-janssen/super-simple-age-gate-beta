@@ -44,7 +44,13 @@ function bcAGGT_gate_check() {
     global $bcAGGT_cookie_time;
 	// hier output post OF de cookie
 	
-    if (isset($_COOKIE['bcAGGTrequiredage'])==1){
+	if (isset($_COOKIE['bcAGGTrequiredage'])) { 
+		$bcAGGTrequiredage = substr(intval($_COOKIE['bcAGGTrequiredage']),0,1); 
+	}else{ 
+		return; 
+	}
+	
+    if ($bcAGGTrequiredage==1){
         $bcAGGT_age_check_int = 1;	
     }else{
 		$bcAGGT_age_check_int = 0;		
@@ -62,25 +68,25 @@ function bcAGGT_gate_check() {
 		$bcAGGT_minimum_age = get_option('bcAGGT_gate_age');	
 	}
 	if (get_option('bcAGGT_gate_cookienotice')==1){
-		$bcAGGT_cookie_notice = substr(isset($_POST['bcAGGT_cookies']),0,1);
+		$post_cookies_int = intval(isset($_POST['bcAGGT_cookies']));
+		$bcAGGT_cookie_notice = substr($post_cookies_int,0,1);
 	}else{
 		$bcAGGT_cookie_notice = 1;
 	}
 	
 	$bcAGGT_error_message = "";
 	$bcAGGT_cookies = "";
- 
-    // Stop running function if form wasn't submitted
-    if ( !isset($_POST['bcAGGT_day']) ) {
-        return;
-    }
-    if ( !isset($_POST['bcAGGT_month']) ) {
-        return;
-    }
-    if ( !isset($_POST['bcAGGT_year']) ) {
-        return;
-    }
+	
 
+    // Stop running function if form wasn't submitted
+    if ( !isset($_POST['bcAGGT_day'])) { $bcAGGT_age_check_int = 0; return; }
+    if ( !isset($_POST['bcAGGT_month'])) { $bcAGGT_age_check_int = 0; return; }
+    if ( !isset($_POST['bcAGGT_year'])) { $bcAGGT_age_check_int = 0; return; }
+	
+	$age_day = substr(intval($_POST['bcAGGT_day']),0,2);
+	$age_month = substr(intval($_POST['bcAGGT_month']),0,2);
+	$age_year = substr(intval($_POST['bcAGGT_year']),0,4);
+	
     // Check that the nonce was set and valid
     if( !wp_verify_nonce($_POST['_wpnonce'], 'wps-frontend-post') ) {
        $bcAGGT_error_message = __("Did not save because your form seemed to be invalid. Sorry",'betagate');
@@ -88,13 +94,13 @@ function bcAGGT_gate_check() {
     }
 
     
-    $age_check = bcAGGT_check_age(substr($_POST['bcAGGT_day'],0,2),substr($_POST['bcAGGT_month'],0,2),substr($_POST['bcAGGT_year'],0,4));
+    $age_check = bcAGGT_check_age($age_day,$age_month,$age_year);
 
 	if ($age_check['age']>110){
 		$age_check['age'] = 0;
 	}
 	
-	if (isset($_POST['bcAGGT_day'])){
+	if (isset($age_day)){
 		
 		if ($bcAGGT_cookie_notice==0){
 			$bcAGGT_error_message = __("If you want to view the content on this website, please agree with the cookie policy.",'betagate');
