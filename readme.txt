@@ -46,6 +46,9 @@ I am not entirely sure since it is a big grey area as with all web-applications 
 5. There is ample oppurtunity to customise this screen so it fits your own needs.
 
 == Changelog ==
+= 1.1 =
+* Fixed some WP admin forms.
+
 = 1.0 =
 * Added cookie length options
 * Added whitelisting options for privacy, cookie and disclaimer policies
