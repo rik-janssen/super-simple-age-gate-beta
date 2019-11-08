@@ -47,7 +47,8 @@ function bcAGGT_gate_check() {
 	if (isset($_COOKIE['bcAGGTrequiredage'])) { 
 		$bcAGGTrequiredage = substr(intval($_COOKIE['bcAGGTrequiredage']),0,1); 
 	}else{ 
-		return; 
+		//return; 
+        $bcAGGTrequiredage = false;
 	}
 	
     if ($bcAGGTrequiredage==1){
@@ -173,36 +174,8 @@ function bcAGGT_is_login_page() {
 /* ---------------------------------------- */
 /* Google bot detection                     */
 function bcAGGT_bot() {
-	$crawlers = array(
-	'Google' => 'Google',
-	'MSN' => 'msnbot',
-		  'Rambler' => 'Rambler',
-		  'Yahoo' => 'Yahoo',
-		  'AbachoBOT' => 'AbachoBOT',
-		  'accoona' => 'Accoona',
-		  'AcoiRobot' => 'AcoiRobot',
-		  'ASPSeek' => 'ASPSeek',
-		  'CrocCrawler' => 'CrocCrawler',
-		  'Dumbot' => 'Dumbot',
-		  'FAST-WebCrawler' => 'FAST-WebCrawler',
-		  'GeonaBot' => 'GeonaBot',
-		  'Gigabot' => 'Gigabot',
-		  'Lycos spider' => 'Lycos',
-		  'MSRBOT' => 'MSRBOT',
-		  'Altavista robot' => 'Scooter',
-		  'AltaVista robot' => 'Altavista',
-		  'ID-Search Bot' => 'IDBot',
-		  'eStyle Bot' => 'eStyle',
-		  'Scrubby robot' => 'Scrubby',
-		  'Facebook' => 'facebookexternalhit',
-	  );
-	  // to get crawlers string used in function uncomment it
-	  // it is better to save it in string than use implode every time
-	  // global $crawlers
-	   $crawlers_agents = implode('|',$crawlers);
-	  if (strpos($crawlers_agents, $USER_AGENT) === false){
-		  return false;
-      } else {
-		return true;
-	  }
+  return (
+    isset($_SERVER['HTTP_USER_AGENT'])
+    && preg_match('/bot|crawl|slurp|spider|mediapartners/i', $_SERVER['HTTP_USER_AGENT'])
+  );
 }

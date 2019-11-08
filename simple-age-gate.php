@@ -10,6 +10,14 @@
 * Domain Path: /lang
 **/
 
+/* Load lang */
+function bcLOADLANG_gate() {
+    load_plugin_textdomain( 'betagate', false, dirname(plugin_basename( __FILE__ )). '/lang' );
+}
+
+add_action( 'init', 'bcLOADLANG_gate' );
+
+
 /* Includes */
 include_once('inc/functions-nav.php'); // the wp-admin navigation
 include_once('inc/functions-wp-admin.php'); // the wp-admin navigation

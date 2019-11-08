@@ -106,7 +106,8 @@
 				$select_vars = array( 'name'=>'gate_theme',
 									 'options'=>array(
 													array('op_name'=>'Classic Light', 'op_value'=>'0'),
-													array('op_name'=>'Classic Dark', 'op_value'=>'classic_dark')
+													array('op_name'=>'Classic Dark', 'op_value'=>'classic_dark'),
+                                                    array('op_name'=>'Black and White', 'op_value'=>'rum')
 													),
 									 'selected'=>get_option('bcAGGT_gate_theme')
 								   );
@@ -329,7 +330,7 @@ $get_slug = explode('/', plugin_basename( __FILE__ ));
         ?>
             <li>
                 <img src="<?php echo plugin_dir_url( __DIR__ ).'img/'.$bc_value['slug'].'.jpg'; ?>" title="<?php echo $bc_value['name']; ?> by Beta" class="bcALG_icon" />
-                <h3><a href="https://wordpress.org/plugins/super-simple-site-offline-beta/" target="_blank"><?php echo $bc_value['name']; ?></a></h3>
+                <h3><a href="https://wordpress.org/plugins/<?php echo $bc_value['slug']; ?>/" target="_blank"><?php echo $bc_value['name']; ?></a></h3>
                 <p><?php echo $bc_value['content']; ?></p>
                 <a href="https://wordpress.org/plugins/<?php echo $bc_value['slug']; ?>/" class="button" target="_blank"><?php _e('Plugin page'); ?></a>
                 <a href="<?php bloginfo('wpurl'); ?>/wp-admin/plugin-install.php?tab=plugin-information&plugin=<?php echo $bc_value['slug']; ?>&TB_iframe=false" class="button button-primary" target="_blank"><?php _e('Install'); ?></a>

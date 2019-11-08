@@ -1,7 +1,7 @@
 #bcAGGT_container{
 	width: 100%;
 	height: 100vh;
-	background-color: #131619;
+	background-color: #000000;
 	position: fixed;
 	z-index: 9999999999999;
 	top: 0;
@@ -20,15 +20,13 @@
     
 .bcAGGT_message_box{
 	width: 600px;
-	background-color: rgba(32,37,42,0.90);
+	background-color: #fff;
 	padding: 50px;
 	margin: 0 auto;
-	border-radius: 3px;
-	border: 1px solid #2E353C;
 }
 
 img.bcAGGT_gate_logo{
-	max-height: 80px;
+	width: 100%;
 }
 
 .bcAGGT_age_message{
@@ -37,7 +35,7 @@ img.bcAGGT_gate_logo{
 	font-size: 17px;
 	line-height: 19px;
 	overflow: hidden;
-	color: #fff;
+	color: #000;
 }
 .bcAGGT_age_message_footer{
 	margin-top: 20px;
@@ -57,38 +55,38 @@ img.bcAGGT_gate_logo{
 	position: relative;
 }
 
-.bcAGGT_age_form input[type="text"]{
+.bcAGGT_age_form input[type="number"]{
 	width: 100%;
 	display: block;
-	background-color: #3C454E;
-	color: #fff;
-	border: 1px solid #2E353C;
-	border-radius: 3px;
+	background-color: #eee;
+	color: #000;
+	border: 0px;
+    border-radius: 0px;
 }
 
 .bcAGGT_age_form label{
 	width: 100%;
 	display: block;
+    font-weight: normal;
 	font-size: 17px;
 	line-height: 19px;
-	color: #fff;
+	color: #ddd;
 }
 
 .bcAGGT_age_cookies{
 	margin-top: 10px;
 	margin-bottom: 10px;
-	padding: 15px;
+	padding: 15px 0px;
 	text-align: left;
-	background-color: #2E353C;
-	color: #ffffff !important;
+	color: #000 !important;
 	font-size: 15px;
 	line-height: 17px;
 	overflow: hidden;
-	border-radius: 3px;
 }
 
 .bcAGGT_age_cookies label.gate-text{
-    color: #ffffff !important;
+    color: #000 !important;
+    margin: 0px;
 }
 
 .bcAGGT_age_cookies input{
@@ -102,17 +100,15 @@ img.bcAGGT_gate_logo{
 	margin-bottom: 10px;
 	padding: 15px;
 	text-align: left;
-	background-color: #0073aa;
+	background-color: #000;
 	color: #fff;
 	font-size: 15px;
 	line-height: 17px;
-	border-radius: 3px;	
 }
 
 #bcAGGT_submit{
 	padding: 10px 15px;
 	width: 100%;
-	border-radius: 3px;
 }
 
 @media only screen and (max-width:620px) {
