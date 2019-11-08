@@ -115,7 +115,7 @@ function bcAGGT_check_input($arg, $label=''){
 			   <?php 
 				if($arg['selected']==$arg['val']){ echo "checked"; } ?> />
 		<span></span>
-		<?php if ($label!=''){ echo "<label>".__($label,'betaoffline')."</label>"; } ?>
+		<?php if ($label!=''){ echo "<label>".__($label,'betagate')."</label>"; } ?>
 	</label>
 </div>
 <?php
@@ -211,12 +211,12 @@ function bcAGGT_imageselect_field($arg){
 	if($img != "") { ?>
 	<div class="bcAGGT_thumbnail">
 		<img src="<?= $img[0]; ?>" width="80px" />
-		<p><?php _e('The currently selected image.','betaoffline'); ?></p>
+		<p><?php _e('The currently selected image.','betagate'); ?></p>
 	</div>
-	<p><?php _e('Select a new image or paste a image ID to replace the one above:','betaoffline'); ?></p>
+	<p><?php _e('Select a new image or paste a image ID to replace the one above:','betagate'); ?></p>
 
 	<?php }else{ ?>
-	<p><?php _e('Select an image or paste an image ID:','betaoffline'); ?></p>	
+	<p><?php _e('Select an image or paste an image ID:','betagate'); ?></p>	
 	<?php }	?>
 	<input type="text" 
 		   value="<?php echo $arg['selected']; ?>" 
@@ -226,7 +226,7 @@ function bcAGGT_imageselect_field($arg){
 		   max="" 
 		   min="1" 
 		   step="1" />
-	<button class="<?php echo 'bcAGGT_'.$arg['name']; ?> button"><?php _e('Media library','betaoffline'); ?></button>
+	<button class="<?php echo 'bcAGGT_'.$arg['name']; ?> button"><?php _e('Media library','betagate'); ?></button>
 	</div>
 	<?php
 }

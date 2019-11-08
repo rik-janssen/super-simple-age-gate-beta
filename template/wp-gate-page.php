@@ -1,3 +1,4 @@
+<!----- AGE GATE -------->
 <?php
 
 	if (get_option( 'bcAGGT_gate_background_image' )!=0 OR get_option( 'bcAGGT_gate_background_image' )!=''){
@@ -13,12 +14,11 @@
 	}
 
 ?>
-
 <div id="bcAGGT_container"<?php echo $background_image; ?>>
 	<div class="bcAGGT_message_box_wrapper">
         <div class="bcAGGT_message_box">
-           <div id="postbox">
-				<form id="new_post" name="new_post" method="post">
+            <form id="bcAGGT_form" name="bcAGGT_form" method="post">
+				
             
 				<?php echo $logo_image; ?>
 				<?php if($bcAGGT_error_message!=""){ ?>
@@ -33,7 +33,6 @@
 				</div>
 				<div class="bcAGGT_age_form">
 					
-					
 					<div class="bcAGGT_form_field">
 						<label for="bcAGGT_day"><?php _e("DD",'betagate'); ?></label>
 						<input type="number" id="bcAGGT_day" value="" tabindex="1" size="2" name="bcAGGT_day" />
@@ -46,25 +45,28 @@
 						<label for="bcAGGT_year"><?php _e("YYYY",'betagate'); ?></label>
 						<input type="number" id="bcAGGT_year" value="" tabindex="1" size="4" name="bcAGGT_year" />
 					</div>
+                    
 				</div>
+                
 				<?php if(get_option('bcAGGT_gate_cookienotice')==1){ ?>
 				<div class="bcAGGT_age_cookies">	
 					<input type="checkbox" id="bcAGGT_cookies" value="1" name="bcAGGT_cookies" />
 					<label for="bcAGGT_cookies" class="gate-text"><?php _e("I agree with the use of cookies.",'betagate'); ?></label>
 				</div>
 				<?php } ?>
+                
 				<?php wp_nonce_field( 'wps-frontend-post' ); ?>
-				</div>
+                
 				<input type="submit" value="<?php _e("Continue",'betagate'); ?>" tabindex="6" id="bcAGGT_submit" name="submit" />
+                
                 <?php if(get_option('bcAGGT_gate_message_footer')!=''){ ?>
-                <div class="bcAGGT_age_message_footer">	
-					<?php echo esc_html(get_option('bcAGGT_gate_message_footer')); ?>
-				</div>
+                    <div class="bcAGGT_age_message_footer">	
+                        <?php echo esc_html(get_option('bcAGGT_gate_message_footer')); ?>
+                    </div>
                <?php } ?>
 
-				</form>
-			</div>
-        </div>
-	</div>
+            </form>
+		</div>
+    </div>
 </div>
-
+<!----- AGE GATE -------->
