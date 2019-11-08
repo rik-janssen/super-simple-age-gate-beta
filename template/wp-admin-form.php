@@ -307,6 +307,10 @@ $bcALG_my_plugins = array(
                     'slug'=>'super-simple-age-gate-beta',
                     'name'=>'Super Simple Age Gate',
                     'content'=>"Do you have to filter out younger visitors? With this super simple age gate you'll fix those age restrictions quickly. Ment for webshops and other types of websites that has to have a curtain where people below your set age can't peek behind.." )/*,
+	            array(
+                    'slug'=>'super-simple-ad-shortcode-beta',
+                    'name'=>'Super Simple Ad Shortcode',
+                    'content'=>'Tired of those heavy-weight plugins that only inject some code in your post? Well, Super Simple Ad Shortcode is lightweight and gives you the oppurtunity to embed ads on pages and posts by simply pasting a shortcode on the desired place in your content. Easy! Works with Google Adsense and other advertising platforms.' ),
                 array(
                     'slug'=>'super-simple-schema-markup-beta',
                     'name'=>'Super Simple Schema Markup',
