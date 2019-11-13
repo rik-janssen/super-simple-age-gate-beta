@@ -2,8 +2,8 @@
 /**
 * Plugin Name: Super Simple Age Gate | Beta
 * Plugin URI: https://betacore.tech/super-simple-age-gate-for-wordpress/
-* Description:  It's all about keeping the youngsters out of your sites while enabling crawlers to know what is on your pages.
-* Version: 1.2
+* Description:  It's all about keeping the youngsters out of your sites while enabling crawlers to know what is on your pages. Works with Wordpress 5.3.
+* Version: 1.3
 * Author: Beta
 * Author URI: https://betacore.tech/
 * Text Domain: betagate
