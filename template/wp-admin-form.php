@@ -306,7 +306,11 @@ $bcALG_my_plugins = array(
                 array(
                     'slug'=>'super-simple-age-gate-beta',
                     'name'=>'Super Simple Age Gate',
-                    'content'=>"Do you have to filter out younger visitors? With this super simple age gate you'll fix those age restrictions quickly. Ment for webshops and other types of websites that has to have a curtain where people below your set age can't peek behind.." )/*,
+                    'content'=>"Do you have to filter out younger visitors? With this super simple age gate you'll fix those age restrictions quickly. Ment for webshops and other types of websites that has to have a curtain where people below your set age can't peek behind.." ),
+				array(
+                    'slug'=>'woo-age-checkbox',
+                    'name'=>'Age Checkbox for Woocommerce',
+                    'content'=>"This plugin goes really well with the Super Simple Age Gate since it's mandatory to check for age at the checkout part of the journey as well. This plugin is simple and blends right into Woocommerce." )/*,
 	            array(
                     'slug'=>'super-simple-ad-shortcode-beta',
                     'name'=>'Super Simple Ad Shortcode',
