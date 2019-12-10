@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/donate/?token=y9x2_N0_18pSbdHE9l9jivsqB3aTKg
 Requires at least: 5.2
 Tested up to: 5.3
 Requires PHP: 7
-Stable tag: 1.3
+Stable tag: 1.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -46,6 +46,9 @@ I am not entirely sure since it is a big grey area as with all web-applications 
 5. There is ample oppurtunity to customise this screen so it fits your own needs.
 
 == Changelog ==
+= 1.4 =
+* Artwork
+
 = 1.3 =
 * Made the plugin 5.3 ready.
 
