@@ -105,7 +105,6 @@ function bcAGGT_gate_check() {
         // the age check true/false function
         $age_check = bcAGGT_check_age($age_day,$age_month,$age_year);    
     }else{
-        print_r($_POST);
         if ( !isset($_POST['submit'])) { return; }
        // if ( !isset($_POST['bcAGGT_submit'])) { $bcAGGT_age_check_int = 0; return; }
         $age_check['age'] = 120; // set a fake age.
