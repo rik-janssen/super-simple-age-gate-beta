@@ -1,3 +1,4 @@
+ 
 /* ------------------------------ */
 /* By Rik Janssen / Betacore.tech */
 /* ------------------------------ */
@@ -72,10 +73,31 @@ ul.bcALG_plugins li{
 	border-radius: 3px;
 }
 
+ul.bcALG_plugins li:first-child{
+	padding: 20px;
+	background-color: #464646;
+	border: 3px solid #494949;
+	border-radius: 3px;
+	grid-column-start: 1; 
+  	grid-column-end: 3; 
+}
+
 ul.bcALG_plugins li h3{
 	margin: 0px;
 	padding: 0px;
 	margin-bottom: 15px;
+}
+
+ul.bcALG_plugins li:first-child h3{
+	font-size: 23px;
+	font-weight: lighter;
+	padding: 10px 0px;
+}
+
+ul.bcALG_plugins li:first-child h3 a,
+ul.bcALG_plugins li:first-child p{
+	color: #fff !important;
+	text-decoration: none;
 }
 
 .bcALG_mailinglist{
@@ -108,6 +130,7 @@ ul.bcALG_mailingform input[type="email"]{
 	color: #0085ba;
 	padding: 5px 15px;
 }
+
 
 ul.bcALG_mailingform li{
 	position: relative;
@@ -195,15 +218,14 @@ div.bcALG_logobar p{
 		margin-bottom: 10px;
 	}
 }
-
 /* the admin bar label */
 
-li.bcAGGT_gate a.ab-item{
+li.bcAGGT_offline a.ab-item{
 	background-color: #0088C9 !important;
 	color: #fff !important;
 }
 
-li.bcAGGT_gate a.ab-item:hover{
+li.bcAGGT_offline a.ab-item:hover{
 	background-color: #F15A29 !important;
 	color: #fff !important;
 }

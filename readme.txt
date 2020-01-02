@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/donate/?token=y9x2_N0_18pSbdHE9l9jivsqB3aTKg
 Requires at least: 5.2
 Tested up to: 5.3
 Requires PHP: 7
-Stable tag: 1.7
+Stable tag: 1.7.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -17,6 +17,7 @@ Do you have to filter out younger people? With this super simple age gate you'll
 
 Super Simple Age Gate contains the following features:
 * Simply put in an age and activate the plugin.
+* Have the visitor confirm their age by using a "yes, I confirm" button OR by letting them fill in their full birth date.
 * Custom background, display text and logo for ease of use. If you don't like the embedded themes, just change the css yourself in a non-destructive way.
 * Enable or disable the cookie notice. This is useful for websites that operate in Europe.
 * Whitelist some policy pages that need to be shown.
@@ -29,6 +30,10 @@ Super Simple Age Gate contains the following features:
 3. Go to the settings menu and activate the age gate.
 
 == Frequently Asked Questions ==
+
+= Do people have to fill in their birthdate? =
+That is possible. Or let them just click a confirm button. Not sure if this conforms to the law but the option is there.
+
 = Can I set the age I want? =
 Oh yes it sure can! Up to a 110.
 
@@ -46,6 +51,21 @@ I am not entirely sure since it is a big grey area as with all web-applications 
 5. There is ample oppurtunity to customise this screen so it fits your own needs.
 
 == Changelog ==
+
+= 1.7.1 =
+* Fixed some styling and wrapped everything up with a bow. 
+
+= 1.7.0 =
+* Removed some empty lines from the php files (mostly in the end)
+* Happy new year
+
+= 1.6 =
+* Fixed some styling issues 
+* added the simplified method of accepting the terms to the admin panel (unreleased version)
+
+= 1.5 =
+* Added the 'yes' function for our own project (unreleased version)
+
 = 1.4 =
 * Artwork
 
