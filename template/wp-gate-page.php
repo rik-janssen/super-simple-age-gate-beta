@@ -60,7 +60,7 @@
                 <?php if (get_option('bcAGGT_gate_gtype')==0){ ?>
                 <input type="submit" value="<?php _e("Continue",'betagate'); ?>" tabindex="6" id="bcAGGT_submit" name="submit" />
                 <?php }elseif (get_option('bcAGGT_gate_gtype')==1){ ?>
-				<input type="submit" value="<?php printf( __( 'Yes, I am over %d years old.', 'my-text-domain' ), get_option('bcAGGT_gate_age') ); ?>" tabindex="6" id="bcAGGT_submit" name="submit" />
+				<input type="submit" value="<?php printf( __( 'Yes, I am over %d years old.', 'betagate' ), get_option('bcAGGT_gate_age') ); ?>" tabindex="6" id="bcAGGT_submit" name="submit" />
                 <?php } ?>
                 
                 <?php if(get_option('bcAGGT_gate_message_footer')!=''){ ?>
