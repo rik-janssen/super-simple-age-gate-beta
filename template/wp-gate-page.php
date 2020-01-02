@@ -31,7 +31,8 @@
 				<div class="bcAGGT_age_message">	
 					<?php echo esc_html(get_option('bcAGGT_gate_message')); ?>
 				</div>
-				<div class="bcAGGT_age_form">
+				<?php if (get_option('bcAGGT_gate_gtype')==0){ ?>
+                <div class="bcAGGT_age_form">
 					
 					<div class="bcAGGT_form_field">
 						<label for="bcAGGT_day"><?php _e("DD",'betagate'); ?></label>
@@ -47,7 +48,7 @@
 					</div>
                     
 				</div>
-                
+                <?php } ?>
 				<?php if(get_option('bcAGGT_gate_cookienotice')==1){ ?>
 				<div class="bcAGGT_age_cookies">	
 					<input type="checkbox" id="bcAGGT_cookies" value="1" name="bcAGGT_cookies" />
@@ -56,8 +57,11 @@
 				<?php } ?>
                 
 				<?php wp_nonce_field( 'wps-frontend-post' ); ?>
-                
-				<input type="submit" value="<?php _e("Continue",'betagate'); ?>" tabindex="6" id="bcAGGT_submit" name="submit" />
+                <?php if (get_option('bcAGGT_gate_gtype')==0){ ?>
+                <input type="submit" value="<?php _e("Continue",'betagate'); ?>" tabindex="6" id="bcAGGT_submit" name="submit" />
+                <?php }elseif (get_option('bcAGGT_gate_gtype')==1){ ?>
+				<input type="submit" value="<?php printf( __( 'Yes, I am over %d years old.', 'my-text-domain' ), get_option('bcAGGT_gate_age') ); ?>" tabindex="6" id="bcAGGT_submit" name="submit" />
+                <?php } ?>
                 
                 <?php if(get_option('bcAGGT_gate_message_footer')!=''){ ?>
                     <div class="bcAGGT_age_message_footer">	

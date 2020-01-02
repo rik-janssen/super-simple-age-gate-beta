@@ -25,6 +25,24 @@
 			
                 </td>
             </tr> 
+            </tr> 
+    		    <tr valign="top">
+                <th scope="row">
+                    <?php _e("Type of age gate", 'betagate'); ?>
+                </th>
+                 <td>
+                <?php 
+				$select_vars = array( 'name'=>'gate_gtype',
+									 'options'=>array(
+													array('op_name'=>'Yes/No form', 'op_value'=>'1'),
+													array('op_name'=>'Birth date form', 'op_value'=>'0'),
+													),
+									 'selected'=>get_option('bcAGGT_gate_gtype')
+								   );
+
+				bcAGGT_select_box($select_vars); ?>
+                </td>
+            </tr>    
             <tr valign="top">
                 <th scope="row">
                     <?php _e("Minimum age", 'betagate'); ?>
@@ -50,9 +68,7 @@
 					<p><?php _e("This is the minimum age that the user has to have to be able to view the content on your website.",'betagate'); ?></p>
                 </td>
             </tr> 
-        <table class="bcAGGT_forms form-table">
-			
-	            <tr valign="top">
+            <tr valign="top">
                 <th scope="row">
                     <?php _e("Cookie notification", 'betagate'); ?>
                 </th>
@@ -93,6 +109,7 @@
 				bcAGGT_select_box($select_vars); ?>
                 </td>
             </tr> 
+        
 		</table>
 		<br />
 		<h2><?php _e('Styling','betagate'); ?></h2>
@@ -138,7 +155,7 @@
 				<?php 
 					 
 				if (get_option('bcAGGT_gate_message')==""){
-					$get_a_message = sprintf( __( 'Are you over %s years old? Confirm this with your birth-date below.', 'betagate' ), $selected_age );
+					$get_a_message = sprintf( __( 'Are you over 18 years old? Confirm this with your birth-date below.', 'betagate' ), $selected_age );
 				}else{
 					$get_a_message = get_option('bcAGGT_gate_message');
 				}

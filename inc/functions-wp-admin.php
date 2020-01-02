@@ -73,6 +73,7 @@ function bcAGGT_settings_register() {
 	// adding the information to the database as options
     register_setting( $setting_name, 'bcAGGT_gate_active', $args_int ); // radio
 	register_setting( $setting_name, 'bcAGGT_gate_age', $args_int ); // radio
+    register_setting( $setting_name, 'bcAGGT_gate_gtype', $args_int ); // radio
 	register_setting( $setting_name, 'bcAGGT_gate_theme', $args_text ); // radio
 	register_setting( $setting_name, 'bcAGGT_gate_logo', $args_text ); // radio
 	register_setting( $setting_name, 'bcAGGT_gate_message', $args_html ); // radio

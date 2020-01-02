@@ -42,62 +42,85 @@ function bcAGGT_gate_check() {
 	global $bcAGGT_error_message;
 	global $bcAGGT_minimum_age;
     global $bcAGGT_cookie_time;
-	// hier output post OF de cookie
 	
+    
+    // --------
+    // output (not) existing cookie
+	    
 	if (isset($_COOKIE['bcAGGTrequiredage'])) { 
 		$bcAGGTrequiredage = substr(intval($_COOKIE['bcAGGTrequiredage']),0,1); 
 	}else{ 
-		//return; 
         $bcAGGTrequiredage = false;
 	}
 	
+    // mke output clean
     if ($bcAGGTrequiredage==1){
         $bcAGGT_age_check_int = 1;	
     }else{
 		$bcAGGT_age_check_int = 0;		
 	}
     
+    // ------
+    // get the cookie length from the settings
 	if(get_option('bcAGGT_gate_cookietime')!=''){
         $bcAGGT_cookie_time = time()+3600*get_option('bcAGGT_gate_cookietime');
     }else{
         $bcAGGT_cookie_time = time()+3600*24*30; // 1 month standard
     }
-
+    
+    // ------
+    // get the minimum age
 	if(get_option('bcAGGT_gate_age')==0){
 		$bcAGGT_minimum_age = 18;
 	}else{
 		$bcAGGT_minimum_age = get_option('bcAGGT_gate_age');	
 	}
+    
+    // ------
+    // confirm that you want to use cookies
 	if (get_option('bcAGGT_gate_cookienotice')==1){
 		$post_cookies_int = intval(isset($_POST['bcAGGT_cookies']));
 		$bcAGGT_cookie_notice = substr($post_cookies_int,0,1);
 	}else{
 		$bcAGGT_cookie_notice = 1;
 	}
-	
+    
+    // ------
+    // define some vars for messaging
 	$bcAGGT_error_message = "";
 	$bcAGGT_cookies = "";
 	
+    if (get_option('bcAGGT_gate_gtype')==0){
+        // Stop running function if form wasn't submitted
+        if ( !isset($_POST['bcAGGT_day'])) { $bcAGGT_age_check_int = 0; return; }
+        if ( !isset($_POST['bcAGGT_month'])) { $bcAGGT_age_check_int = 0; return; }
+        if ( !isset($_POST['bcAGGT_year'])) { $bcAGGT_age_check_int = 0; return; }
 
-    // Stop running function if form wasn't submitted
-    if ( !isset($_POST['bcAGGT_day'])) { $bcAGGT_age_check_int = 0; return; }
-    if ( !isset($_POST['bcAGGT_month'])) { $bcAGGT_age_check_int = 0; return; }
-    if ( !isset($_POST['bcAGGT_year'])) { $bcAGGT_age_check_int = 0; return; }
-	
-	$age_day = substr(intval($_POST['bcAGGT_day']),0,2);
-	$age_month = substr(intval($_POST['bcAGGT_month']),0,2);
-	$age_year = substr(intval($_POST['bcAGGT_year']),0,4);
-	
+        // make the vars all nice
+        $age_day = substr(intval($_POST['bcAGGT_day']),0,2);
+        $age_month = substr(intval($_POST['bcAGGT_month']),0,2);
+        $age_year = substr(intval($_POST['bcAGGT_year']),0,4);
+
+
+        // the age check true/false function
+        $age_check = bcAGGT_check_age($age_day,$age_month,$age_year);    
+    }else{
+        print_r($_POST);
+        if ( !isset($_POST['submit'])) { return; }
+       // if ( !isset($_POST['bcAGGT_submit'])) { $bcAGGT_age_check_int = 0; return; }
+        $age_check['age'] = 120; // set a fake age.
+        $age_day = 1; // use a var to trigger the age 
+    }
+    
+    
     // Check that the nonce was set and valid
     if( !wp_verify_nonce($_POST['_wpnonce'], 'wps-frontend-post') ) {
        $bcAGGT_error_message = __("Did not save because your form seemed to be invalid. Sorry",'betagate');
        return;
     }
 
-    
-    $age_check = bcAGGT_check_age($age_day,$age_month,$age_year);
 
-	if ($age_check['age']>110){
+	if ($age_check['age']>150){
 		$age_check['age'] = 0;
 	}
 	
