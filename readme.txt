@@ -1,21 +1,23 @@
 === Super Simple Age Gate ===
 Contributors: Rik Janssen
 Tags: age gate, adults-only, age restrictions
-Donate link: https://www.paypal.com/donate/?token=y9x2_N0_18pSbdHE9l9jivsqB3aTKgWQ3qGgxg_t6VUUmSU6B2H1hUcANUBzhX5xV0qg2G&country.x=NL&locale.x=NL
+Donate link: https://www.patreon.com/betadev
 Requires at least: 5.2
-Tested up to: 5.3
+Tested up to: 5.4
 Requires PHP: 7
-Stable tag: 1.7.1
+Stable tag: 1.7.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Do you have to filter out younger people? With this super simple age gate you'll fix those age restrictions quickly. Ment for webshops and other types of websites that has to have a curtain where people below your set age can't peek behind.
+Do you have to filter out younger people? With this super simple age gate you'll fix those age restrictions quickly. 
+Ment for webshops and other types of websites that has to have a curtain where people below your set age can't peek behind.
 
 == Description ==
+Do you have to filter out younger people? With this super simple age gate you'll fix those age restrictions quickly. 
+This plugin is ment for webshops and other types of websites that has to have a curtain where people below your set age can't peek behind. 
+With some nice customisable items and features and the option to add a cookie notice this is a complete plugin for those who need is. 
 
-Do you have to filter out younger people? With this super simple age gate you'll fix those age restrictions quickly. Ment for webshops and other types of websites that has to have a curtain where people below your set age can't peek behind. With some nice customisable items and features and the option to add a cookie notice this is a complete plugin for those who need is. 
-
-Super Simple Age Gate contains the following features:
+= Super Simple Age Gate contains the following features: =
 * Simply put in an age and activate the plugin.
 * Have the visitor confirm their age by using a "yes, I confirm" button OR by letting them fill in their full birth date.
 * Custom background, display text and logo for ease of use. If you don't like the embedded themes, just change the css yourself in a non-destructive way.
@@ -51,6 +53,8 @@ I am not entirely sure since it is a big grey area as with all web-applications 
 5. There is ample oppurtunity to customise this screen so it fits your own needs.
 
 == Changelog ==
+= 1.7.2 =
+* WP 5.4 tested
 
 = 1.7.1 =
 * Fixed some styling and wrapped everything up with a bow. 
