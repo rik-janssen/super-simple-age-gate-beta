@@ -24,7 +24,7 @@
 				<?php if($bcAGGT_error_message!=""){ ?>
 	
 					<div class="bcAGGT_error_message">
-						<?php echo $bcAGGT_error_message; ?>
+						<?php echo 	$bcAGGT_error_message; ?>
 					</div>
 				<?php } ?>
 			

@@ -5,7 +5,7 @@ Donate link: https://www.patreon.com/betadev
 Requires at least: 5.2
 Tested up to: 5.4
 Requires PHP: 7
-Stable tag: 1.7.2
+Stable tag: 1.7.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -53,6 +53,11 @@ I am not entirely sure since it is a big grey area as with all web-applications 
 5. There is ample oppurtunity to customise this screen so it fits your own needs.
 
 == Changelog ==
+= 1.7.3 =
+* WP 5.5 tested
+* Sanitisation update
+* Rebranded
+
 = 1.7.2 =
 * WP 5.4 tested
 

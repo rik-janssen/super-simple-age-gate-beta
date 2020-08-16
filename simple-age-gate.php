@@ -1,10 +1,10 @@
 <?php 
 /**
 * Plugin Name: Super Simple Age Gate
-* Plugin URI: https://betacore.tech/plugins/super-simple-age-gate-for-wordpress/
+* Plugin URI: https://rikjanssen.info/plugins/super-simple-age-gate-for-wordpress/
 * Description:  It's all about keeping the youngsters out of your sites while enabling crawlers to know what is on your pages. 
-* Version: 1.7.2
-* Author: Rik Janssen (Beta)
+* Version: 1.7.3
+* Author: Rik Janssen 
 * Author URI: https://betacore.tech/
 * Text Domain: betagate
 * Domain Path: /lang
