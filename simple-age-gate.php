@@ -5,7 +5,7 @@
 * Description:  It's all about keeping the youngsters out of your sites while enabling crawlers to know what is on your pages. 
 * Version: 1.7.3
 * Author: Rik Janssen 
-* Author URI: https://betacore.tech/
+* Author URI: https://rikjanssen.info/
 * Text Domain: betagate
 * Domain Path: /lang
 **/
